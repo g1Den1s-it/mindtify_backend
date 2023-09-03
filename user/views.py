@@ -2,11 +2,13 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
-
+from rest_framework.permissions import AllowAny
 from user.serializers import UserSerializer
 
 
 class RegistrationView(generics.CreateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
         data = request.data
