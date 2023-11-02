@@ -50,8 +50,8 @@ class TextAnswer(models.Model):
 class ResponseTest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice = models.ForeignKey(Choice, on_delete=models.CASCADE, null=True, blank=True)
+    question = models.ManyToManyField(Question)
+    choice = models.ManyToManyField(Choice, blank=True)
     text_answer = models.ForeignKey(TextAnswer, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
