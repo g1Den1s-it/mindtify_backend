@@ -9,4 +9,6 @@ if [ ! -f /app/static/.last_modified ]; then
     touch /app/static/.last_modified
 fi
 
+python3 manage.py test
+
 gunicorn mindtify.wsgi:application --bind 0.0.0.0:8000
